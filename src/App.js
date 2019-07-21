@@ -1,78 +1,60 @@
-import React, { Component } from 'react';
-import 'typeface-roboto';
-import Login from './Login/Login';
-import Chat from './Chat/Chat';
-import { BrowserRouter as Switch, Route, Redirect } from 'react-router-dom';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import React, { Component } from "react";
+import "typeface-roboto";
+import { BrowserRouter as Switch } from "react-router-dom";
+import ProtectedRoute from "./shared/protectedRoute/ProtectedRoute";
+import PublicRoute from "./shared/publicRoute/PublicRoute";
+import Login from "./pages/login/Login";
+import Chat from "./pages/chat/Chat";
 
 class App extends Component {
   state = {
     loggedIn: false,
-    token: null,
     user: null,
-    messages: [
-      {
-        text: 'message 1',
-        id: 'msg1',
-        date: {
-          timestamp: Date.now().toLocaleString(),
-          formatted: 'yesterday'
-        },
-        username: 'User1'
-      },
-      {
-        text: 'message 2',
-        id: 'msg2',
-        date: {
-          timestamp: Date.now().toLocaleString(),
-          formatted: 'yesterday'
-        },
-        username: 'Tser1'
-      },
-      {
-        text: 'message 3',
-        id: 'msg3',
-        date: {
-          timestamp: Date.now().toLocaleString(),
-          formatted: 'yesterday'
-        },
-        username: 'Zser1'
-      }
-    ]
+    disconnected: false
   };
 
-  loginHandler = () => {
-    this.setState(prevState => ({
-      ...prevState,
-      loggedIn: true
+  disconnectHandler = () => {
+    debugger;
+    this.setState({
+      user: null,
+      loggedIn: false,
+      disconnected: true
+    });
+  };
+
+  loginHandler = userName => {
+    this.setState(() => ({
+      loggedIn: true,
+      user: userName
     }));
   };
 
-  loginPage = () => {
-    if (!this.state.loggedIn) {
-      return <Login onLogin={this.loginHandler} />;
-    } else {
-      return <Redirect to='/chat' />;
-    }
-  };
-
-  guardedChatPage = () => {
-    if (this.state.loggedIn) {
-      return <Chat messages={this.state.messages} user={this.state.user} />;
-    } else {
-      return <Redirect to='/' />;
-    }
+  resetDisconnectedHandler = () => {
+    this.setState({ disconnected: false });
   };
 
   render() {
     return (
-      <React.Fragment>
-        <CssBaseline />
+      <div className="App">
         <Switch>
-          <Route path='/' exact render={this.loginPage} />
-          <Route path='/chat/' render={this.guardedChatPage} />
+          <ProtectedRoute
+            exact
+            path="/chat"
+            loggedIn={this.state.loggedIn}
+            component={Chat}
+            user={this.state.user}
+            onDisconnect={this.disconnectHandler}
+          />
+          <PublicRoute
+            path="/"
+            component={Login}
+            loggedIn={this.state.loggedIn}
+            onLogin={this.loginHandler}
+            resetDiscconected={this.resetDisconnectedHandler}
+            disconnected={this.state.disconnected}
+          />
         </Switch>
-      </React.Fragment>
+      </div>
     );
   }
 }
