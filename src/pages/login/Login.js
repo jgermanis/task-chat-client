@@ -1,40 +1,40 @@
-import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
-import PageContainer from "../../shared/pageContainer/PageContainer";
-import withStyles from "@material-ui/core/styles/withStyles";
-import axios from "axios";
-import { config } from "../../config";
-import SnackbarContent from "@material-ui/core/SnackbarContent";
+import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import PageContainer from '../../shared/pageContainer/PageContainer';
+import withStyles from '@material-ui/core/styles/withStyles';
+import axios from 'axios';
+import { config } from '../../config';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
 
 const loginClasses = theme => ({
   main: {
-    height: "100vh",
-    padding: "30px 0",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center"
+    height: '100vh',
+    padding: '30px 0',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   form: {
-    width: "100%",
-    marginTop: "15px"
+    width: '100%',
+    marginTop: '15px',
   },
   submit: {
-    margin: "24px 0px 16px"
+    margin: '24px 0px 16px',
   },
   error: {
     backgroundColor: theme.palette.error.dark,
-    marginTop: "20px",
-    textAlign: "center"
-  }
+    marginTop: '20px',
+    textAlign: 'center',
+  },
 });
 
 class Login extends Component {
   state = {
-    userName: "",
-    error: null
+    userName: '',
+    error: null,
   };
 
   handleChange = event => {
@@ -47,7 +47,7 @@ class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
     if (!this.state.userName) {
-      return this.setState({error: 'Please enter username.'})
+      return this.setState({ error: 'Please enter username.' });
     }
     this.setState({ error: null });
     event.preventDefault();
@@ -57,7 +57,7 @@ class Login extends Component {
       },
       error => {
         this.setState({
-          error: (error.response && error.response.data) || "Error"
+          error: (error.response && error.response.data) || 'Error',
         });
       }
     );
@@ -115,4 +115,4 @@ class Login extends Component {
   }
 }
 
-export default withStyles(loginClasses)(Login)
+export default withStyles(loginClasses)(Login);

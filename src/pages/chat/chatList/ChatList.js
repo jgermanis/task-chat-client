@@ -1,49 +1,49 @@
-import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar";
-import React from "react";
-import ListItemText from "@material-ui/core/ListItemText";
-import List from "@material-ui/core/List";
-import { makeStyles } from "@material-ui/core";
-import { lime, purple } from "@material-ui/core/colors";
+import ListItem from '@material-ui/core/ListItem';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
+import React from 'react';
+import ListItemText from '@material-ui/core/ListItemText';
+import List from '@material-ui/core/List';
+import { makeStyles } from '@material-ui/core';
+import { lime, purple } from '@material-ui/core/colors';
 
 const createClasses = makeStyles(() => ({
   list: {
-    width: "100%",
+    width: '100%',
     flexGrow: 1,
-    display: "flex",
-    overflowY: "auto",
-    flexDirection: "column",
-    justifyContent: "flex-end"
+    display: 'flex',
+    overflowY: 'auto',
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
   },
   myMessage: {
-    textAlign: "right"
+    textAlign: 'right',
   },
   myAvatar: {
     backgroundColor: lime[500],
-    marginLeft: "auto"
+    marginLeft: 'auto',
   },
   avatar: {
-    backgroundColor: purple[500]
+    backgroundColor: purple[500],
   },
   statusMsg: {
-    fontSize: "12px",
-    fontWeight: "bold"
+    fontSize: '12px',
+    fontWeight: 'bold',
   },
   time: {
-    color: "gray",
-    fontWeight: "normal"
-  }
+    color: 'gray',
+    fontWeight: 'normal',
+  },
 }));
 
 const chatList = ({ messages, user }) => {
   const classes = createClasses();
   const item = message => {
-    if (message.type === "clientStatus") {
+    if (message.type === 'clientStatus') {
       return (
         <li className={classes.statusMsg}>
-          {message.text}{" "}
-          <span className={classes.time}>{message.date.formatted}</span>{" "}
+          {message.text}{' '}
+          <span className={classes.time}>{message.date.formatted}</span>{' '}
         </li>
       );
     }
@@ -91,4 +91,4 @@ const chatList = ({ messages, user }) => {
   );
 };
 
-export default chatList
+export default chatList;

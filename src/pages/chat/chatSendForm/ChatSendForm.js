@@ -1,19 +1,19 @@
-import TextField from "@material-ui/core/TextField";
-import Fab from "@material-ui/core/Fab";
-import Send from "@material-ui/icons/Send";
-import React from "react";
-import { makeStyles } from "@material-ui/core";
+import TextField from '@material-ui/core/TextField';
+import Fab from '@material-ui/core/Fab';
+import Send from '@material-ui/icons/Send';
+import React from 'react';
+import { makeStyles } from '@material-ui/core';
 
 const createClasses = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: "calc(100% - 100px)"
+    width: 'calc(100% - 100px)',
   },
   form: {
-    display: "flex",
-    alignItems: "center"
-  }
+    display: 'flex',
+    alignItems: 'center',
+  },
 }));
 
 const chatSendForm = ({ message, update, submit }) => {
@@ -38,4 +38,4 @@ const chatSendForm = ({ message, update, submit }) => {
   );
 };
 
-export default chatSendForm
+export default chatSendForm;

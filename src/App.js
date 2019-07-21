@@ -1,30 +1,30 @@
-import React, { Component } from "react";
-import "typeface-roboto";
-import { BrowserRouter as Switch } from "react-router-dom";
-import ProtectedRoute from "./shared/protectedRoute/ProtectedRoute";
-import PublicRoute from "./shared/publicRoute/PublicRoute";
-import Login from "./pages/login/Login";
-import Chat from "./pages/chat/Chat";
+import React, { Component } from 'react';
+import 'typeface-roboto';
+import { BrowserRouter as Switch } from 'react-router-dom';
+import ProtectedRoute from './shared/protectedRoute/ProtectedRoute';
+import PublicRoute from './shared/publicRoute/PublicRoute';
+import Login from './pages/login/Login';
+import Chat from './pages/chat/Chat';
 
 class App extends Component {
   state = {
     loggedIn: false,
     user: null,
-    disconnected: false
+    disconnected: false,
   };
 
   disconnectHandler = () => {
     this.setState({
       user: null,
       loggedIn: false,
-      disconnected: true
+      disconnected: true,
     });
   };
 
   loginHandler = userName => {
     this.setState(() => ({
       loggedIn: true,
-      user: userName
+      user: userName,
     }));
   };
 

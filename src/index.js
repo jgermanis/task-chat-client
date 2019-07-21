@@ -8,9 +8,9 @@ import { createMuiTheme } from '@material-ui/core';
 
 ReactDOM.render(
   <ThemeProvider theme={createMuiTheme({})}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </ThemeProvider>,
   document.getElementById('root')
 );
