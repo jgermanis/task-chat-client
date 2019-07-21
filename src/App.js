@@ -14,7 +14,6 @@ class App extends Component {
   };
 
   disconnectHandler = () => {
-    debugger;
     this.setState({
       user: null,
       loggedIn: false,

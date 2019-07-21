@@ -9,7 +9,7 @@ export default class Chat extends Component {
     message: ""
   };
 
-  ws = new WebSocket(`ws://localhost:3002/ws?user=${this.props.user}`);
+  ws = new WebSocket(`ws://localhost:3001/ws?user=${this.props.user}`);
 
   componentDidMount() {
     this.ws.onmessage = evt => {

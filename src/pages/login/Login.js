@@ -51,7 +51,7 @@ class Login extends Component {
     }
     this.setState({ error: null });
     event.preventDefault();
-    axios.post(config.devApiUrl + "login", { user: this.state.userName }).then(
+    axios.post(config.devApiUrl + '/login', { user: this.state.userName }).then(
       res => {
         this.props.onLogin(res.data.user);
       },
